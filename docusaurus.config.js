@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'React 笔记',
+  tagline: '记录一些 React 相关',
   url: 'https://heinfy.github.io',
   baseUrl: '/react-doc/',
   onBrokenLinks: 'throw',
@@ -24,9 +24,11 @@ const config = {
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'zh-Hans',
+    locales: ['zh-Hans'],
   },
+
+  plugins: [require.resolve('docusaurus-lunr-search')],
 
   presets: [
     [
@@ -41,11 +43,17 @@ const config = {
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
-          showReadingTime: true,
+          showReadingTime: false,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // 搜索引擎优化
+          // blogTitle: 'Docusaurus 博客！',
+          // blogDescription: '这是个用 Docusaurus 搭建的博客！',
+          // postsPerPage: 'ALL',
+          blogSidebarTitle: '全部博文',
+          blogSidebarCount: 'ALL',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -57,10 +65,19 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [{ name: 'raect，router, keywords', content: 'raect，router, keywords' }],
+      docs: {
+        sidebar: {
+          // 可隐藏侧边栏
+          hideable: true,
+          // 自动折叠侧边栏类别
+          autoCollapseCategories: true,
+        },
+      },
       navbar: {
-        title: 'My Site',
+        title: 'React Note',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'React Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -68,11 +85,17 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: '文档',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          // {
+          //   type: 'docSidebar',
+          //   position: 'left',
+          //   sidebarId: 'api',
+          //   label: 'API',
+          // },
+          { to: '/blog', label: '博客', position: 'left' },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/heinfy/react-doc',
             label: 'GitHub',
             position: 'right',
           },
@@ -80,7 +103,7 @@ const config = {
       },
       footer: {
         style: 'dark',
-        links: [
+        /* links: [
           {
             title: 'Docs',
             items: [
@@ -120,8 +143,8 @@ const config = {
               },
             ],
           },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        ], */
+        copyright: `Copyright © ${new Date().getFullYear()} React Doc, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

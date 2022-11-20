@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+tags: [react, 开始上手]
 ---
 
 # Tutorial Intro
